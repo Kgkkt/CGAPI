@@ -11,7 +11,7 @@ namespace CGAPI.DB
 
         public DbSet<CGUser> CGUsers { get; set; }
 
-        public DbSet<CG_Playlist> CG_Playlists { get; set; }
+        public DbSet<CG_Playlist> CG_Playlists { get; set; } // stet
 
         public DbSet<CG_Text> CG_Texts { get; set; }
 
