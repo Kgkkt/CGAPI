@@ -10,7 +10,9 @@ namespace CGAPI.VModels
 
         public List<IFormFile>? Quest { get; set; }
 
-        public List<IFormFile>? Answer { get; set; }
+        public List<IFormFile>? CorrectAnswer { get; set; }
+
+        public List<IFormFile>? WrongAnswer { get; set; }
 
     }
 }

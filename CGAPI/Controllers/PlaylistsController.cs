@@ -11,15 +11,15 @@ namespace CGAPI.Controllers
     [ApiController]
     public class PlaylistsController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         private readonly CGDBContext _db;
-        private readonly IWebHostEnvironment _webHostEnvironment;
-        public PlaylistsController(IWebHostEnvironment webHostEnvironment, CGDBContext db, UserService userService)
+  
+        public PlaylistsController( CGDBContext db, IUserService userService)
         {
             _userService = userService;
 
             _db = db;
-            _webHostEnvironment = webHostEnvironment;
+      
             
         }
 
@@ -53,8 +53,9 @@ namespace CGAPI.Controllers
             _db.CG_GameElements.Add(new CG_GameElement
             {
                 CG_Image = new CG_Image { Img = FileManager.GetBytes(myGameElement.Img) },
-                CG_Playlist = new CG_Playlist { CGUserId = _userService.CurrentUserId, Name = "test", Type = GLOB.PlayListTypes.Public },
-                CG_SoundAnswer = new CG_Sound { Sound = FileManager.GetBytes(myGameElement.Answer) },
+                CG_Playlist = new CG_Playlist { CGUserId = /*_userService.CurrentUserId*/1, Name = "test", Type = GLOB.PlayListTypes.Public },
+                CG_SoundWrongAnswer = new CG_Sound { Sound = FileManager.GetBytes(myGameElement.WrongAnswer) },
+                CG_SoundCorrectAnswer = new CG_Sound { Sound = FileManager.GetBytes(myGameElement.CorrectAnswer) },
                 CG_SoundQuestion = new CG_Sound { Sound = FileManager.GetBytes(myGameElement.Quest) },
             });
 
@@ -88,19 +89,7 @@ namespace CGAPI.Controllers
             return Ok();
         }
 
-        [HttpGet("getSound")]
-        public IActionResult GetSound(int id)
-        {
-            var arr = _db.CG_Sounds.First().Sound.Decompress();       
-            return Ok(arr);
-        }
-
-
-        [HttpGet]
-        public IActionResult GetTest()
-        {
-            return Ok(561324);
-        }
+      
 
 
     }

@@ -6,6 +6,6 @@
 
         [Required]
         [MaxLength(16000)]
-        public byte[] Sound { get; set; }
+        public byte[] Sound { get; set; } = default!;
     }
 }

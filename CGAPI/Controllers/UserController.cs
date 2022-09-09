@@ -40,7 +40,7 @@ namespace CGAPI.Controllers
 
 
         [AllowAnonymous]
-        [HttpPost("Aurh")]
+        [HttpPost("auth")]
         public IActionResult AuthUser([FromBody] LoginUser user)
         {
             var dbUser = _db.CGUsers.FirstOrDefault(x => x.Username == user.Username && x.Password == user.Password);

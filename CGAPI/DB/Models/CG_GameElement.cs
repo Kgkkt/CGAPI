@@ -8,7 +8,9 @@
 
         public int CG_SoundQuestionId { get; set; }
 
-        public int CG_SoundAnswerId { get; set; }
+        public int CG_SoundCorrectAnswerId { get; set; }
+
+        public int CG_SoundWrongAnswerId { get; set; }
 
         public int CG_PlaylistId { get; set; }
 
@@ -22,8 +24,11 @@
         [ForeignKey(nameof(CG_SoundQuestionId))]
         public CG_Sound CG_SoundQuestion { get; set; }
 
-        [ForeignKey(nameof(CG_SoundAnswerId))]
-        public CG_Sound CG_SoundAnswer { get; set; }
+        [ForeignKey(nameof(CG_SoundCorrectAnswerId))]
+        public CG_Sound CG_SoundCorrectAnswer{ get; set; }
+
+        [ForeignKey(nameof(CG_SoundWrongAnswerId))]
+        public CG_Sound CG_SoundWrongAnswer { get; set; }
 
     }
 }
